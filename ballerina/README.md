@@ -6,13 +6,15 @@ This package provides Ballerina Natural Programming (NP) integration with Ollama
 
 The `ballerinax/ollama.np` package enables seamless interaction with Ollama's local LLMs through Ballerina's Natural Programming capabilities. It provides a convenient interface to query language models running locally on your machine through Ollama.
 
-## Prerequisites
+## Setup Guide
+
+### Prerequisites
 
 - Ballerina Swan Lake 2201.12.0 or later
 - Ollama installed and running locally (https://ollama.com/)
 - At least one language model pulled in Ollama (e.g., `llama3.2`, `codellama`, etc.)
 
-## Installation
+### Installation
 
 Add the package as a dependency in your Ballerina.toml file:
 
@@ -23,7 +25,7 @@ name = "ollama.np"
 version = "0.1.0"
 ```
 
-## Configuration
+### Configuration
 
 The package can be configured using the following parameters:
 
@@ -42,7 +44,7 @@ ollama_default_model = "llama2"
 ollama_service_timeout = 60.0
 ```
 
-## Usage
+## Quick Start
 
 ### Basic Example
 
@@ -54,28 +56,25 @@ import ballerina/io;
 
 // Expected return type for the prompt
 type Person record {|
-    string name;
-    int age;
+string name;
+int age;
 |};
 
 // Sample NP function to get user details (Note the annotation @np:NaturalFunction to make it a natural function)
 // NOTE: context, prompt are required parameters for the function. You are free to use any other parameters as per your requirement.
 public isolated function getPersonInfo(
-        np:Context context,
-        np:Prompt prompt
+np:Context context,
+np:Prompt prompt
 ) returns Person|error = @np:NaturalFunction external;
 
-// Run the function with default Ollama model (e.g., llama3.2:3B)
+// Run the function with default Ollama model
 public function main() returns error? {
-    final np:Context ollamaContext = {
-        model: check new ollama:OllamaModel()
-    };
+    final np:Context ollamaContext = { model: check new ollama:OllamaModel() };
     final np:Prompt prompt = `John is a 30-year-old software engineer from San Francisco. Give me his details.`;
     Person person = check getPersonInfo(ollamaContext, prompt);
     io:println("Name: ", person.name);
     io:println("Age: ", person.age);
 }
-
 ```
 
 ### Using with Different Models
@@ -87,21 +86,11 @@ final np:Context ollamaContext = {
 };
 ```
 
-## API Reference
+## Examples
 
-### ollamaModel
-
-<!-- ```ballerina
-function ollamaModel(string model, np:Prompt prompt, map<any>? options = ()) returns json|error
-```
-
-Parameters:
-- `model`: Name of the Ollama model to use
-- `prompt`: The input prompt/query to send to the model
-- `options`: Optional parameters like output format
-
-Returns:
-- A JSON response containing the model's output or an error -->
+- [Default Model Country Example](../examples/default-model/README.md) - Fetch information about a country using the default model.
+- [Simple Person Example](../examples/simple-person/README.md) - Fetch basic information about a person.
+- [Complex Person Example](../examples/complex-person/README.md) - Fetch detailed information about a person.
 
 ## License
 
