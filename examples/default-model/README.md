@@ -5,7 +5,7 @@ This example demonstrates the simplest usage of the Ollama library to fetch info
 ## Prerequisites
 
 - Ballerina Swan Lake 2201.12.0 or later
-- Ollama installed and running locally (https://ollama.com/)
+- Ollama installed and running locally (<https://ollama.com/>)
 - At least one language model pulled in Ollama (e.g., `llama3.2:3B`)
 
     ```bash

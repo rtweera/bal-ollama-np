@@ -5,7 +5,7 @@ This example demonstrates a more complex interaction with the Ollama model. It f
 ## Prerequisites
 
 - Ballerina Swan Lake 2201.12.0 or later
-- Ollama installed and running locally (https://ollama.com/)
+- Ollama installed and running locally (<https://ollama.com/>)
 - At least one language model pulled in Ollama (e.g., `gemma3`)
 
     ```bash
