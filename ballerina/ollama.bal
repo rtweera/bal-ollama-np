@@ -24,7 +24,10 @@ public isolated client class OllamaModel {
             format: expectedResponseSchema
         };
         http:Response httpResponse = check self.cl->/api/chat.post(payload);
-        OllamaResponse response = check (check httpResponse.getJsonPayload()).fromJsonWithType();
+        OllamaResponse|OllamaError response = check (check httpResponse.getJsonPayload()).fromJsonWithType();
+        if response is OllamaError {
+            return error("Ollama error: " + response.'error);
+        }
         return response.message.content.fromJsonString();
     }
 }

@@ -16,3 +16,7 @@ type jsonMessage record {|
     string role;
     string content;
 |};
+
+type OllamaError record {|
+    string 'error;
+|};
