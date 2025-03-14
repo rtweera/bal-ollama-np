@@ -1,0 +1,23 @@
+{
+    "name":"John",
+    "age":30,
+    "address":{
+        "street":"123 Main St",
+        "city":"San Francisco",
+        "state":"CA",
+        "zip":"94105"
+    },
+    "hobbies":["hiking","reading","coding"],
+    "workExperience":[
+        {"company":"Google","position":"Senior Software Engineer","startDate":"2015","endDate":"2020"},
+        {"company":"Facebook","position":"Tech Lead","startDate":"2020","endDate":"present"}
+    ],
+    "education":[
+        {"institution":"Stanford University","degree":"Bachelor's degree in Computer Science","graduationYear":"My year of graduation isn't provided here, but is stated as 2014."}
+    ],
+    "projects":[
+        {"name":"Social media platform","description":"A social media application.","technologies":[" technologies not specified here"]},
+        {"name":"Machine learning library","description":"A machine learning library.","technologies":[" technologies not specified here"]},
+        {"name":"Cloud computing service","description":"A cloud computing application.","technologies":[" technologies not specified here"]}
+    ]
+}
