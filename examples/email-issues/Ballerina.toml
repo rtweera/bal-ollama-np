@@ -1,0 +1,20 @@
+[package]
+org = "ravindu"
+name = "email_issues"
+version = "0.1.0"
+distribution = "2201.12.0-20250310-080700-94702e9e"
+
+[build-options]
+observabilityIncluded = true
+
+[[dependency]]
+org = "ballerinax"
+name = "ollama.np"
+version = "0.1.0"
+repository="local"
+
+[[platform.java21.dependency]]
+groupId = "io.ballerina.stdlib"
+artifactId = "persist.inmemory-native"
+version = "1.6.0-20250305-175700-63a11a1"
+
