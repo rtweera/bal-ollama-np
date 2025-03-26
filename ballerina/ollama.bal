@@ -13,6 +13,9 @@ public isolated client class OllamaModel {
 
     public function init(string url=ollama_service_url, string model=ollama_default_model, decimal timeout=ollama_service_timeout) returns error? {
         self.cl = check new (url, timeout = timeout);
+        if model == "" {
+            return error("Model name cannot be empty");
+        }
         self.model = model;
     }
 
@@ -23,6 +26,9 @@ public isolated client class OllamaModel {
             'stream: false,
             format: expectedResponseSchema
         };
+        if prompt == "" {
+            return error("Prompt cannot be empty");
+        }
         http:Response httpResponse = check self.cl->/api/chat.post(payload);
         OllamaResponse|OllamaError response = check (check httpResponse.getJsonPayload()).fromJsonWithType();
         if response is OllamaError {
